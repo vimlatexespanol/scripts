@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Script: toggle_bar_and_padding.sh
+
+BAR_HEIGHT=30  # Ajusta a tu altura de Polybar
+
+if pgrep -x polybar > /dev/null; then
+    # Polybar visible → ocultar y quitar padding
+    polybar-msg cmd toggle
+    bspc config top_padding 0
+else
+    # Polybar oculta → mostrar y agregar padding
+    bspc config top_padding $BAR_HEIGHT
+    polybar-msg cmd toggle
+fi

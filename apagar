@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Opciones
+options="Apagar\nReiniciar\nBloquear"
+
+# Mostrar menú y guardar elección
+choice=$(echo -e "$options" | rofi -dmenu -p "Acción")
+
+# Ejecutar según la elección
+case "$choice" in
+    "Apagar")  shutdown -h now ;;
+    "Reiniciar") systemctl reboot ;;
+    "Bloquear") exec ~/.local/bin/bloqueo ;;
+    *) ;;
+esac
+

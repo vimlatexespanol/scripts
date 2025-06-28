@@ -1,0 +1,11 @@
+#!/bin/sh
+
+img="/tmp/lock_blur.png"
+rm "$img"
+
+# Captura la pantalla y aplica blur
+scrot "$img"
+convert "$img" -blur 0x7 "$img"
+
+# Bloquea con la imagen difuminada
+i3lock -i "$img"
